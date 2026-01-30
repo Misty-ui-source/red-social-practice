@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色足迹：井冈山·南昌社会实践活动</title>
+    <style>
+        :root {
+            --primary-red: #c62828;
+            --secondary-red: #ef5350;
+            --dark-red: #8e0000;
+            --light-gray: #f5f5f5;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .logo-icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #ffeb3b;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffeb3b;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+                        url('https://images.unsplash.com/photo-1548613053-8aee570c15b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            color: white;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-red);
+            box-shadow: 0 5px 15px rgba(198, 40, 40, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(198, 40, 40, 0.4);
+        }
+        
+        /* 主要内容区域 */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--dark-red);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        .content-box {
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .content-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .content-box h3 {
+            color: var(--dark-red);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-red);
+            padding-left: 15px;
+        }
+        
+        /* 地点卡片 */
+        .location-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .location-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            color: var(--dark-red);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* 目标列表 */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .goal-item {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .goal-icon {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+        
+        /* 安全预案 */
+        .safety-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .safety-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .safety-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .safety-item h4 {
+            color: var(--dark-red);
+            margin-bottom: 10px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffeb3b;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-red);
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-monument logo-icon"></i>
+                红色足迹
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#background">选题背景</a></li>
+                <li><a href="#significance">实践意义</a></li>
+                <li><a href="#locations">实践地点</a></li>
+                <li><a href="#plan">实践方案</a></li>
+                <li><a href="#goals">预期目标</a></li>
+                <li><a href="#safety">安全预案</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>红色足迹：井冈山·南昌社会实践活动</h1>
+            <p class="hero-subtitle">用好红色资源，赓续红色血脉 · 从革命摇篮到军旗升起的地方</p>
+            <a href="#background" class="cta-button">探索实践详情</a>
+        </div>
+    </header>
+
+    <!-- 选题背景 -->
+    <section class="section" id="background">
+        <h2 class="section-title">选题背景及意义</h2>
+        <div class="content-box animate-on-scroll">
+            <p>近年来，习近平总书记多次强调"用好红色资源，赓续红色血脉"，要求推动红色文化创造性转化、创新性发展。井冈山作为中国革命的摇篮，孕育了"坚定信念、艰苦奋斗、实事求是、敢闯新路、依靠群众、勇于胜利"的井冈山精神；南昌作为"军旗升起的地方"，打响了武装反抗国民党反动派的第一枪。</p>
+            <p>在新时代背景下，如何让书写在教科书、陈列在纪念馆里的厚重历史，真正"活"起来、"动"起来，精准抵达并深刻影响作为"网络原住民"的Z世代青年，是一项紧迫而重要的课题。</p>
+        </div>
+    </section>
+
+    <!-- 实践意义 -->
+    <section class="section" id="significance">
+        <h2 class="section-title">实践意义</h2>
+        <div class="content-box animate-on-scroll">
+            <h3><i class="fas fa-heart"></i> 赓续红色血脉、坚定文化自信</h3>
+            <p>井冈山精神和八一精神是中国共产党人精神谱系的重要源头。通过团队成员亲身体验和深度实践，能够最直接、最深刻地触摸中国革命的历史脉搏，将崇高的革命信仰和内化的精神力量转化为坚定的"四个自信"。</p>
+        </div>
+        <div class="content-box animate-on-scroll">
+            <h3><i class="fas fa-map-marker-alt"></i> 激活地域资源、服务地方发展</h3>
+            <p>实践团队将不仅是学习者、接受者，更是建设者、传播者。助力井冈山和南昌红色旅游的数字化、年轻化转型，为革命老区的发展注入青春动能，实现社会实践与服务地方的有机统一。</p>
+        </div>
+        <div class="content-box animate-on-scroll">
+            <h3><i class="fas fa-users"></i> 引领青年成长、担当时代重任</h3>
+            <p>这是一次深刻的"行走的思政课"。在革命圣地的实地淬炼中，将自觉肩负起传承红色基因的时代使命，锤炼艰苦奋斗的意志品质，提升解决实际问题的创新能力。</p>
+        </div>
+    </section>
+
+    <!-- 实践地点 -->
+    <section class="section" id="locations">
+        <h2 class="section-title">实践地点</h2>
+        <div class="location-cards">
+            <div class="location-card animate-on-scroll">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1598974357801-cbca100e5d10?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">井冈山 · 吉安市</h3>
+                    <p>中国革命的摇篮，孕育井冈山精神</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>黄洋界哨口</li>
+                        <li>八角楼</li>
+                        <li>大井毛泽东旧居</li>
+                        <li>小井红军医院</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="location-card animate-on-scroll">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1548613053-8aee570c15b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">南昌市</h3>
+                    <p>军旗升起的地方，八一精神的诞生地</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>八一南昌起义纪念馆</li>
+                        <li>南昌起义总指挥部旧址</li>
+                        <li>朱德军官教育团旧址</li>
+                        <li>新四军军部旧址</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实践方案 -->
+    <section class="section" id="plan">
+        <h2 class="section-title">实践方案</h2>
+        <div class="content-box animate-on-scroll">
+            <h3><i class="fas fa-mountain"></i> 井冈山实践内容</h3>
+            <ol style="padding-left: 20px; margin-top: 15px;">
+                <li>革命遗址调研：走访黄洋界哨口、八角楼、大井毛泽东旧居、小井红军医院等核心遗址</li>
+                <li>深度访谈：访谈当地老党员、革命后代或历史研究者</li>
+                <li>文创调研：考察井冈山文创旗舰店，探索文创创新可能</li>
+                <li>文旅访谈：采访文旅人员，了解宣传方式及成效</li>
+                <li>问卷调查：了解群众对井冈山红色文化的了解程度</li>
+            </ol>
+        </div>
+        <div class="content-box animate-on-scroll">
+            <h3><i class="fas fa-flag"></i> 南昌实践内容</h3>
+            <ol style="padding-left: 20px; margin-top: 15px;">
+                <li>参观八一南昌起义纪念馆，梳理起义历史脉络与精神符号</li>
+                <li>亲自体验红色文化宣传活动</li>
+                <li>采访文旅人员，了解宣传方式及成效</li>
+                <li>学习南昌优秀宣传方式，对井冈山红色文化宣传提出新思考</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 预期目标 -->
+    <section class="section" id="goals">
+        <h2 class="section-title">预期目标</h2>
+        <div class="goals-grid">
+            <div class="goal-item animate-on-scroll">
+                <div class="goal-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h4>梳理精神脉络</h4>
+                <p>梳理井冈山斗争时期的重大事件与精神脉络</p>
+            </div>
+            <div class="goal-item animate-on-scroll">
+                <div class="goal-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h4>了解宣传方式</h4>
+                <p>了解两地红色文化的宣传方式与效果</p>
+            </div>
+            <div class="goal-item animate-on-scroll">
+                <div class="goal-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h4>创新宣传思路</h4>
+                <p>思考更有效的红色文化宣传方式</p>
+            </div>
+            <div class="goal-item animate-on-scroll">
+                <div class="goal-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h4>多媒体宣传</h4>
+                <p>制作推文和调研视频，在多平台宣传</p>
+            </div>
+            <div class="goal-item animate-on-scroll">
+                <div class="goal-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h4>形成调研报告</h4>
+                <p>分析现状和问题、提出建议</p>
+            </div>
+            <div class="goal-item animate-on-scroll">
+                <div class="goal-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h4>政府建议访谈</h4>
+                <p>向当地政府提出宣传红色文化的建议</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 安全预案 -->
+    <section class="section" id="safety">
+        <h2 class="section-title">安全预案</h2>
+        <div class="safety-list animate-on-scroll">
+            <div class="safety-item">
+                <h4><i class="fas fa-user-shield"></i> 人员安全</h4>
+                <p>团队成员需提供个人基本信息和紧急联系方式，实践过程中保持联系，定期报告位置和情况。</p>
+            </div>
+            <div class="safety-item">
+                <h4><i class="fas fa-traffic-light"></i> 交通安全</h4>
+                <p>遵守交通规则，不擅自横穿马路或违反交通规定。使用交通工具时确保车辆安全，避免夜间单独行走。</p>
+            </div>
+            <div class="safety-item">
+                <h4><i class="fas fa-shield-alt"></i> 防护措施</h4>
+                <p>注意安全环境，避免进入危险区域或与陌生人接触。进入危险地区需提前做好安全准备。</p>
+            </div>
+            <div class="safety-item">
+                <h4><i class="fas fa-exclamation-triangle"></i> 紧急情况处理</h4>
+                <p>如遇紧急情况，保持冷静，及时报警或联系当地相关部门，按照指示采取适当行动。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-logo">
+            <i class="fas fa-monument"></i> 红色足迹
+        </div>
+        <p>井冈山·南昌社会实践活动</p>
+        <div class="footer-links">
+            <a href="#background">选题背景</a>
+            <a href="#significance">实践意义</a>
+            <a href="#locations">实践地点</a>
+            <a href="#plan">实践方案</a>
+            <a href="#goals">预期目标</a>
+            <a href="#safety">安全预案</a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 红色足迹社会实践活动团队. 保留所有权利.
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // 点击导航链接后关闭移动菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+        
+        // 观察所有需要动画的元素
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)';
+            } else {
+                navbar.style.boxShadow = '0 2px 15px rgba(0,0,0,0.2)';
+            }
+        });
+    </script>
+</body>
+</html>
