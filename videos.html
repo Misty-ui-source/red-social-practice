@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实践视频展示 - 红色足迹：井冈山·南昌社会实践活动</title>
+    <style>
+        /* 复制您现有的所有CSS样式到这里 */
+        /* 只需要复制 <style> 标签内的所有内容 */
+        /* 我已经在上面添加了新的样式 */
+        
+        /* 这里放置您原有的所有CSS样式 */
+        /* 加上我在上面添加的新样式 */
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏（与主页相同） -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-monument logo-icon"></i>
+                红色足迹
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#background">选题背景</a></li>
+                <li><a href="index.html#significance">实践意义</a></li>
+                <li><a href="index.html#locations">实践地点</a></li>
+                <li><a href="index.html#plan">实践方案</a></li>
+                <li><a href="index.html#goals">预期目标</a></li>
+                <li><a href="index.html#safety">安全预案</a></li>
+                <li><a href="videos.html" class="active">实践视频</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('南昌八一起义纪念馆/背景图主页.jpg'); height: 60vh; min-height: 400px;">
+        <div class="hero-content">
+            <h1>实践视频展示</h1>
+            <p class="hero-subtitle">观看井冈山·南昌社会实践活动的精彩视频记录</p>
+        </div>
+    </header>
+
+    <!-- 视频导航 -->
+    <section class="section">
+        <div class="video-nav">
+            <a href="#video1" class="video-nav-btn active">赓续红色血脉</a>
+            <a href="#video2" class="video-nav-btn">激活地域资源</a>
+            <a href="#video3" class="video-nav-btn">引领青年成长</a>
+            <a href="index.html" class="video-nav-btn" style="background: var(--light-gray); color: var(--text-dark);">返回主页</a>
+        </div>
+        
+        <!-- 视频1：赓续红色血脉 -->
+        <div class="video-container" id="video1">
+            <h2 class="video-title">
+                <i class="fas fa-heart" style="color: var(--primary-red); margin-right: 10px;"></i>
+                赓续红色血脉、坚定文化自信
+            </h2>
+            <div class="video-wrapper">
+                <!-- 使用您的视频文件路径 -->
+                <video controls poster="南昌八一起义纪念馆/参观/2.jpg">
+                    <source src="视频文件路径/红色血脉视频.mp4" type="video/mp4">
+                    <source src="视频文件路径/红色血脉视频.webm" type="video/webm">
+                    您的浏览器不支持视频播放，请尝试使用现代浏览器。
+                </video>
+            </div>
+            <div class="video-description">
+                <h4><i class="fas fa-info-circle"></i> 视频简介：</h4>
+                <p>本视频记录了团队成员在井冈山和南昌追寻红色足迹的过程，展示了红色文化的深厚底蕴和时代价值。通过实地探访革命遗址，聆听革命故事，深刻感悟井冈山精神和八一精神，坚定文化自信。</p>
+                <p><strong>视频时长：</strong> 5分30秒</p>
+                <p><strong>拍摄地点：</strong> 井冈山革命博物馆、八一南昌起义纪念馆</p>
+            </div>
+        </div>
+        
+        <!-- 视频2：激活地域资源 -->
+        <div class="video-container" id="video2">
+            <h2 class="video-title">
+                <i class="fas fa-map-marker-alt" style="color: var(--primary-red); margin-right: 10px;"></i>
+                激活地域资源、服务地方发展
+            </h2>
+            <div class="video-wrapper">
+                <!-- 使用您的视频文件路径 -->
+                <video controls poster="井冈山图片路径.jpg">
+                    <source src="视频文件路径/地域资源视频.mp4" type="video/mp4">
+                    <source src="视频文件路径/地域资源视频.webm" type="video/webm">
+                    您的浏览器不支持视频播放，请尝试使用现代浏览器。
+                </video>
+            </div>
+            <div class="video-description">
+                <h4><i class="fas fa-info-circle"></i> 视频简介：</h4>
+                <p>本视频展示了团队如何通过数字化手段和创新方式激活红色资源，助力革命老区发展。记录了与当地文旅部门的访谈、文创产品调研以及推动红色旅游年轻化的实践探索。</p>
+                <p><strong>视频时长：</strong> 6分15秒</p>
+                <p><strong>拍摄地点：</strong> 井冈山文创旗舰店、南昌市文旅局</p>
+            </div>
+        </div>
+        
+        <!-- 视频3：引领青年成长 -->
+        <div class="video-container" id="video3">
+            <h2 class="video-title">
+                <i class="fas fa-users" style="color: var(--primary-red); margin-right: 10px;"></i>
+                引领青年成长、担当时代重任
+            </h2>
+            <div class="video-wrapper">
+                <!-- 使用您的视频文件路径 -->
+                <video controls poster="实践团队照片路径.jpg">
+                    <source src="视频文件路径/青年成长视频.mp4" type="video/mp4">
+                    <source src="视频文件路径/青年成长视频.webm" type="video/webm">
+                    您的浏览器不支持视频播放，请尝试使用现代浏览器。
+                </video>
+            </div>
+            <div class="video-description">
+                <h4><i class="fas fa-info-circle"></i> 视频简介：</h4>
+                <p>这是一堂生动的"行走的思政课"。视频记录了青年学子在革命圣地的成长历程，展现了新时代青年传承红色基因、勇担时代使命的精神风貌，以及将学习成果转化为实际行动的生动实践。</p>
+                <p><strong>视频时长：</strong> 7分10秒</p>
+                <p><strong>拍摄地点：</strong> 井冈山实践基地、南昌红色教育基地</p>
+            </div>
+        </div>
+        
+        <!-- 返回链接 -->
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="index.html#significance" class="cta-button">
+                <i class="fas fa-arrow-left"></i> 返回实践意义
+            </a>
+        </div>
+    </section>
+
+    <!-- 页脚（与主页相同） -->
+    <footer>
+        <div class="footer-logo">
+            <i class="fas fa-monument"></i> 红色足迹
+        </div>
+        <p>井冈山·南昌社会实践活动</p>
+        <div class="footer-links">
+            <a href="index.html#background">选题背景</a>
+            <a href="index.html#significance">实践意义</a>
+            <a href="index.html#locations">实践地点</a>
+            <a href="index.html#plan">实践方案</a>
+            <a href="index.html#goals">预期目标</a>
+            <a href="index.html#safety">安全预案</a>
+            <a href="videos.html">实践视频</a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 红色足迹社会实践活动团队. 保留所有权利.
+        </div>
+    </footer>
+
+    <script>
+        // 复制您现有的所有JavaScript代码到这里
+        // 并添加以下新功能
+        
+        // 移动端菜单切换
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // 点击导航链接后关闭移动菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // 视频导航按钮点击效果
+        document.querySelectorAll('.video-nav-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (!this.getAttribute('href').includes('index.html')) {
+                    e.preventDefault();
+                    
+                    // 移除所有按钮的active类
+                    document.querySelectorAll('.video-nav-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    
+                    // 给当前按钮添加active类
+                    this.classList.add('active');
+                    
+                    // 滚动到对应视频
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // 自动激活当前视频对应的导航按钮
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                    const currentVideoId = entry.target.id;
+                    document.querySelectorAll('.video-nav-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('href') === `#${currentVideoId}`) {
+                            btn.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // 观察所有视频容器
+        document.querySelectorAll('.video-container').forEach(container => {
+            observer.observe(container);
+        });
+        
+        // 平滑滚动（用于从主页卡片点击过来的情况）
+        if (window.location.hash) {
+            const targetElement = document.querySelector(window.location.hash);
+            if (targetElement) {
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
