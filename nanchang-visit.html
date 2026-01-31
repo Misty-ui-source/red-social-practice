@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>南昌市参观照片 - 红色足迹社会实践活动</title>
+    <title>南昌市参观照片与视频 - 红色足迹社会实践活动</title>
     <style>
         :root {
             --primary-red: #c62828;
@@ -413,6 +413,69 @@
         .close-modal:hover {
             color: var(--secondary-red);
         }
+        /* 视频展示样式 */
+.video-section {
+    margin: 60px 0 40px;
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.video-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.video-info {
+    padding: 20px;
+}
+
+.video-info h4 {
+    color: var(--dark-red);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.video-info p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.video-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #888;
+}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -829,7 +892,64 @@
                     </div>
                 </div>
             </div>
+             <!-- 视频展示 - 新增部分 -->
+    <section class="section video-section" id="videos">
+        <h2 class="section-title">南昌参观视频记录</h2>
+        
+        <div class="content-box">
+            <h3><i class="fas fa-video"></i> 南昌参观视频集</h3>
+            <p>除了照片记录外，我们还拍摄了精彩的视频资料，动态展示南昌革命圣地的参观历程和团队实践活动。</p>
             
+            <div class="video-container">
+                <!-- 视频1 -->
+                <div class="video-item">
+                    <div class="video-wrapper">
+                        <video controls poster="南昌视频/视频1封面.jpg">
+                            <source src="南昌八一起义纪念馆/参观/新意之处/720°大屏影像展示.mp4" type="video/mp4">
+                            <source src="南昌八一起义纪念馆/参观/新意之处/720°大屏影像展示.webm" type="video/webm">
+                            您的浏览器不支持视频播放，请尝试使用现代浏览器。
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4><i class="fas fa-play-circle"></i> 八一南昌起义纪念馆新意之处：大屏影像展示视频</h4>
+                        <p>记录团队参观八一南昌起义纪念馆时，发现的纪念馆现代科技方式展示，包括纪念馆外观、内部展览、历史文物和互动体验区。</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> 13秒</span>
+                            <span><i class="far fa-calendar"></i> 2026年1月</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 视频2 -->
+                <div class="video-item">
+                    <div class="video-wrapper">
+                        <video controls poster="南昌视频/视频2封面.jpg">
+                            <source src="南昌八一起义纪念馆/参观/新意之处/影像视频展示.mp4" type="video/mp4">
+                            <source src="南昌八一起义纪念馆/参观/新意之处/影像视频展示.webm" type="video/webm">
+                            您的浏览器不支持视频播放，请尝试使用现代浏览器。
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4><i class="fas fa-play-circle"></i>八一南昌起义纪念馆新意之处：影像展示视频</h4>
+                        <p>记录团队参观八一南昌起义纪念馆时，发现的纪念馆现代科技方式展示，包括纪念馆外观、内部展览、历史文物和互动体验区。</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> 54秒</span>
+                            <span><i class="far fa-calendar"></i> 2026年1月</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 视频描述 -->
+            <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px; border-left: 4px solid var(--primary-red);">
+                <h4><i class="fas fa-info-circle"></i> 视频制作说明</h4>
+                <p>视频拍摄使用4K高清设备，由团队成员共同完成拍摄、剪辑和后期制作。视频内容不仅记录了参观过程，还包含了专家讲解、团队讨论和现场访谈等内容。</p>
+                <p><strong>视频分辨率：</strong> 1920×1080（高清）</p>
+                <p><strong>总时长：</strong> 1分07秒</p>
+                <p><strong>制作团队：</strong> 红色足迹社会实践视频组</p>
+            </div>
+        </div>
+    </section>
             <!-- 页面导航 -->
             <div class="page-nav">
                 <a href="index.html#locations"><i class="fas fa-arrow-left"></i> 返回地点选择</a>
@@ -901,6 +1021,17 @@
                 }
             });
         });
+        // 视频播放控制优化
+document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('play', function() {
+        // 暂停其他视频
+        document.querySelectorAll('video').forEach(otherVideo => {
+            if (otherVideo !== this && !otherVideo.paused) {
+                otherVideo.pause();
+            }
+        });
+    });
+});
         
         // 图片模态框功能
         function openModal(imageSrc, caption) {
