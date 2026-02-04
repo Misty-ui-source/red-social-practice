@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队成员 - 红色足迹社会实践活动</title>
+    <style>
+        /* 使用与主页相同的样式变量 */
+        :root {
+            --primary-red: #c62828;
+            --secondary-red: #ef5350;
+            --dark-red: #8e0000;
+            --light-gray: #f5f5f5;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+        
+        /* 导航栏 - 与主页一致 */
+        .navbar {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .logo-icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+        }
+        
+        /* 团队成员页面特有样式 */
+        .team-hero {
+            height: 40vh;
+            min-height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+                        url('团队/团队合影.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 70px;
+        }
+        
+        .team-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--dark-red);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* 分工类别 */
+        .team-category {
+            margin-bottom: 50px;
+        }
+        
+        .category-title {
+            color: var(--dark-red);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title i {
+            margin-right: 10px;
+            color: var(--primary-red);
+        }
+        
+        /* 团队成员网格 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(198, 40, 40, 0.1);
+        }
+        
+        .member-header {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            background: var(--light-gray);
+        }
+        
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .member-content {
+            padding: 20px;
+        }
+        
+        .member-responsibility {
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .member-intro {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .member-thoughts {
+            background: var(--light-gray);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+            border-left: 3px solid var(--primary-red);
+        }
+        
+        /* 返回按钮 */
+        .back-to-home {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-monument logo-icon"></i>
+                红色足迹
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#background">选题背景</a></li>
+                <li><a href="index.html#significance">实践意义</a></li>
+                <li><a href="index.html#locations">实践地点</a></li>
+                <li><a href="index.html#plan">实践方案</a></li>
+                <li><a href="index.html#goals">预期目标</a></li>
+                <li><a href="index.html#safety">安全预案</a></li>
+                <li><a href="index.html#team">团队成员</a></li>
+                <li><a href="videos.html">实践视频</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 团队页面标题 -->
+    <header class="team-hero">
+        <div class="hero-content">
+            <h1>团队成员</h1>
+            <p class="hero-subtitle">星火寻根实践团队</p>
+        </div>
+    </header>
+
+    <!-- 团队成员展示 -->
+    <section class="team-section">
+        <h2 class="section-title">团队成员及分工</h2>
+        
+        <!-- 分工一：线上推送 -->
+        <div class="team-category">
+            <h3 class="category-title"><i class="fas fa-bullhorn"></i> 1. 线上推送组</h3>
+            <div class="team-grid">
+                <!-- 刘雪婷 -->
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-photo">
+                            <img src="团队成员照片路径/雪婷.jpg" alt="雪婷">
+                        </div>
+                        <div class="member-name">刘雪婷</div>
+                        <div class="member-role">线上推送负责人</div>
+                    </div>
+                    <div class="member-content">
+                        <div class="member-responsibility">负责内容：微信公众号推送、宣传视频制作</div>
+                        <p class="member-intro">负责统筹线上宣传工作，带领团队成员创建微信公众号，制作推送内容，联系交通东南、东大青年说、大学生青年网等平台投稿。</p>
+                        <div class="member-thoughts">
+                            "希望通过我们的努力，让更多人了解红色文化，传承革命精神。"
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 线上推送组其他成员示例 -->
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-photo">
+                            <img src="团队成员照片路径/雪婷.jpg" alt="雪婷">
+                        </div>
+                        <div class="member-name">线上推送组成员</div>
+                        <div class="member-role">宣传制作</div>
+                    </div>
+                    <div class="member-content">
+                        <div class="member-responsibility">负责内容：素材收集、文案撰写、排版设计</div>
+                        <p class="member-intro">团队成员共同协作，学习优秀团队案例，寻找合适模板，制作高质量的推送内容和宣传视频，提升红色文化宣传效果。</p>
+                        <div class="member-thoughts">
+                            "借助新媒体平台，让红色故事焕发时代光彩。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 分工二：线下实践 -->
+        <div class="team-category">
+            <h3 class="category-title"><i class="fas fa-map-marker-alt"></i> 2. 线下实践组</h3>
+            <div class="team-grid">
+                <!-- 王书文 -->
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-photo">
+                            <img src="团队成员照片路径/王书文.jpg" alt="王书文">
+                        </div>
+                        <div class="member-name">王书文</div>
+                        <div class="member-role">线下实践负责人</div>
+                    </div>
+                    <div class="member-content">
+                        <div class="member-responsibility">负责内容：实地调研、访谈记录、学校介绍信协调</div>
+                        <p class="member-intro">负责组织南昌八一起义纪念馆和井冈山的实地调研活动，安排行程，联系纪念馆工作人员，确保实践活动顺利进行。</p>
+                        <div class="member-thoughts">
+                            "行走在革命圣地，每一处遗址都是一堂生动的历史课。"
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 章凌嘉 -->
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-photo">
+                            <img src="团队成员照片路径/章凌嘉.jpg" alt="章凌嘉">
+                        </div>
+                        <div class="member-name">章凌嘉</div>
+                        <div class="member-role">文案撰写</div>
+                    </div>
+                    <div class="member-content">
+                        <div class="member-responsibility">负责内容：采访记录、心得整理、宣传材料</div>
+                        <p class="member-intro">负责记录实践过程中的所见所闻，整理访谈内容，撰写心得体会，为线上宣传提供文字素材。</p>
+                        <div class="member-thoughts">
+                            "用文字记录红色足迹，让历史在笔尖流淌。"
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 黄羽桐 -->
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-photo">
+                            <img src="团队成员照片路径/黄羽桐.jpg" alt="黄羽桐">
+                        </div>
+                        <div class="member-name">黄羽桐</div>
+                        <div class="member-role">摄影摄像</div>
+                    </div>
+                    <div class="member-content">
+                        <div class="member-responsibility">负责内容：实地拍摄、照片视频素材收集</div>
+                        <p class="member-intro">负责实践过程中的摄影摄像工作，记录重要瞬间，收集高质量的视觉素材用于宣传和成果展示。</p>
+                        <div class="member-thoughts">
+                            "通过镜头捕捉红色记忆，让瞬间成为永恒。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 分工三：网页制作 -->
+        <div class="team-category">
+            <h3 class="category-title"><i class="fas fa-code"></i> 3. 网页制作组</h3>
+            <div class="team-grid">
+                <!-- 张浩泽 -->
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-photo">
+                            <img src="团队成员照片路径/zhz.jpg" alt="张浩泽">
+                        </div>
+                        <div class="member-name">张浩泽</div>
+                        <div class="member-role">网页设计与开发</div>
+                    </div>
+                    <div class="member-content">
+                        <div class="member-responsibility">负责内容：网站设计、前端开发、成果展示</div>
+                        <p class="member-intro">负责设计并开发社会实践活动展示网站，将团队收集的素材、照片、视频等内容以网页形式进行创新性展示。</p>
+                        <div class="member-thoughts">
+                            "用代码搭建红色记忆的数字桥梁，让实践成果触手可及。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 项目时间安排 -->
+        <div class="content-box" style="margin-top: 40px;">
+            <h3><i class="fas fa-calendar-alt"></i> 项目时间安排</h3>
+            <ul style="padding-left: 20px; margin-top: 15px;">
+                <li><strong>线上推送</strong>：刘雪婷带领团队在年前完成微信公众号创建和初步内容发布</li>
+                <li><strong>线下实践</strong>：王书文、章凌嘉、黄羽桐在2月初前往南昌八一起义纪念馆和井冈山进行实地调研</li>
+                <li><strong>网页制作</strong>：张浩泽在2月6日前完成网站主体框架，年后持续更新内容</li>
+                <li><strong>成果提交</strong>：2月6日前完成东大青年说投稿，确保所有成果在年前基本完成</li>
+            </ul>
+        </div>
+        
+        <!-- 返回主页按钮 -->
+        <div class="back-to-home">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回主页
+            </a>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer style="background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%); color: white; text-align: center; padding: 40px 20px;">
+        <div class="footer-logo" style="font-size: 2rem; margin-bottom: 20px; color: white;">
+            <i class="fas fa-monument"></i> 红色足迹
+        </div>
+        <p>井冈山·南昌社会实践活动</p>
+        <div class="footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; margin: 20px 0;">
+            <a href="index.html#background" style="color: white; text-decoration: none; margin: 0 15px; transition: color 0.3s;">选题背景</a>
+            <a href="index.html#significance" style="color: white; text-decoration: none; margin: 0 15px; transition: color 0.3s;">实践意义</a>
+            <a href="index.html#locations" style="color: white; text-decoration: none; margin: 0 15px; transition: color 0.3s;">实践地点</a>
+            <a href="index.html#team" style="color: white; text-decoration: none; margin: 0 15px; transition: color 0.3s;">团队成员</a>
+        </div>
+        <div class="copyright" style="margin-top: 20px; opacity: 0.8;">
+            &copy; 2026 东南大学交通学院星火寻根红色足迹社会实践活动团队. 保留所有权利.
+        </div>
+    </footer>
+
+    <script>
+        // 简单导航功能
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
